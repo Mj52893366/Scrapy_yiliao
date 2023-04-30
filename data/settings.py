@@ -16,12 +16,15 @@ SPIDER_MODULES = ["data.spiders"]
 NEWSPIDER_MODULE = "data.spiders"
 
 MYSQL = {
-    "host": "x.xx.xx.xx",
+    "host": "xxx",
     "port": 3306,
     "user": "xxx",
     "password": "xxx",
     "database": "xxx"
 }
+
+
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 

@@ -35,11 +35,11 @@ class XywyDataPipeline:
                 "insert into xywy(name,introduction,department,population,complication,medication,cause,inspect,symptom) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                 (item['name'], item['introduction'], item['department'], item['population'],
                  item['complication'], item['medication'], item['cause'], item['inspect'], item['symptom']))
-            print('insert ok')
+            print('Xywy-insert')
             self.conn.commit()
         except:
             self.conn.rollback()
-            print('插入失败')
+            print('xywy写入异常')
         finally:
             if cursor:
                 cursor.close()
@@ -73,8 +73,9 @@ class haodaifuDataPipeline:
                                      item['cause'], item['symptom'], item['prevent'], item['inspect'], item['treatment'],
                                      item['nutrition_and_diet'], item['notice'], item['prognosis']))
                 self.conn.commit()
-                print('成功')
+                print('Haodaifu-insert')
         except pymysql.Error as e:
+            print('haodaifu写入异常')
             self.conn.rollback()
         finally:
             if cursor:
@@ -105,10 +106,10 @@ class a39netDataPipeline:
             cursor.execute(sql, (item['name'], item['introduction'], item['altname'], item['pathogenic_site'],
                                  item['department'], item['population'], item['symptom'], item['inspect'],
                                  item['complication'], item['treatment']))
-            print('ok')
+            print('A39net-insert')
             self.conn.commit()
         except:
-            print('写入异常')
+            print('a39net写入异常')
             self.conn.rollback()
         finally:
             if cursor:
