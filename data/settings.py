@@ -15,12 +15,15 @@ BOT_NAME = "data"
 SPIDER_MODULES = ["data.spiders"]
 NEWSPIDER_MODULE = "data.spiders"
 
+CONCURRENT_REQUESTS = 5 # 同时只能进行1个请求
+DOWNLOAD_DELAY = 0.1 # 设置下载延迟为0.5秒
+
 MYSQL = {
-    "host": "xxx",
+    "host": "x",
     "port": 3306,
-    "user": "xxx",
-    "password": "xxx",
-    "database": "xxx"
+    "user": "x",
+    "password": "x",
+    "database": "x",
 }
 
 
@@ -28,7 +31,7 @@ MYSQL = {
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 
-# USER_AGENT = random.choice(user_agent_pool)
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.64"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -58,15 +61,15 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    "data.middlewares.DataSpiderMiddleware": 543,
-#}
+# SPIDER_MIDDLEWARES = {
+#    "data.middlewares.DownloaderMiddleware": 543,
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-   "data.middlewares.DownloaderMiddleware": 543,
-}
+# DOWNLOADER_MIDDLEWARES = {
+#    "data.middlewares.DownloaderMiddleware": 543,
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

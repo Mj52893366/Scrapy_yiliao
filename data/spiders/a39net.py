@@ -47,13 +47,12 @@ class A39netSpider(scrapy.Spider):
                 callback=self.basic_information
             )
         # 翻页
-        next_href = response.xpath("//ul[@class='result_item_dots']/li/span[@class='>']/a/@href").extract_first()
+        next_href = self.url_header + response.xpath("//ul[@class='result_item_dots']/li/span[contains(a/text(),'>')]/a/@href").extract_first()
         if next_href:
-            print(next_href)
-            # yield scrapy.Request(
-            #     url=next_href,
-            #     callback=self.Second_classification
-            # )
+            yield scrapy.Request(
+                url=next_href,
+                callback=self.Second_classification
+            )
 
 
     # 疾病基础页,不够查询,做跳转
